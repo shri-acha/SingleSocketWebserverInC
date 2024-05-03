@@ -23,8 +23,10 @@ void main(){
 
 	if(bind(server_fd,
 		(struct sockaddr *)&server_addr,
-		sizeof(server_addr)) < 0)
+		sizeof(server_addr)) < 0) //bind requires the arguments of the empty server file descriptor(which is an integer value that stores and represents the server and requires the socket address information{Type is casted to convert sockaddr[more standard storage]}). 
+					  //Checkout the documentation for sockaddr_in struct declaration,which has padding to have same storage as of sockaddr 
 	{
+printf("%d",server_fd);
 
 		printf("%d",server_fd);
 		perror("Bind Failure!");
