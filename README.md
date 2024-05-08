@@ -7,3 +7,5 @@ Things to work on:
 - Understand
   1. Server socket handling.
   2. Client socket handling.
+
+- Status: *Under Construction*
