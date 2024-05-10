@@ -2,8 +2,9 @@
 #include<sys/socket.h>//defines socket()
 #include<stdlib.h> //Defines exit
 #include<netinet/in.h> //Defines sockaddr_in,sin_port,sin_addr,sin_port
-
+#include<pthread.h>
 #define PORT 8080
+
 
 void main(){
 
@@ -44,19 +45,23 @@ void main(){
 
 		struct sockaddr_in client_addr;
 		socklen_t client_addr_len = sizeof(client_addr);
-		int* client_fd =(int*) malloc(sizeof(int));
-	
+		int*client_fd = (int *) malloc(sizeof(int));
+
 		if(*client_fd = accept(server_fd,
 					(struct sockaddr*)&client_addr,
-					&client_addr_len)<0) //It assigns the pointer to integer, client_fd an integer address returned by accept.
+					&client_addr_len) < 0) //It assigns the pointer to integer, client_fd an integer address returned by accept.
 							     //Look up the syntax for accept() but probably the server_addr(accept the socket request to)
 							     //client_addr stores the socket information,and size of client_addr is necessary for the acceptance of the request.
 		{
 			perror("Error in accepting");	
 		}
-
-
+	//new thread to handle client request.
+		pthread_t thread_id;
+		pthread_create(&thread_id,NULL, handle_client,(void *)client_fd);
+		pthread_detach(thread_id);
 	}
 
 }
+
+
 
