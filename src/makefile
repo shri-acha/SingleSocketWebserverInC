@@ -1,4 +1,5 @@
 CFLAGS = -lnsl -o
 
-all:
-	gcc main.c $(CFLAGS) out
+all:main.c client.c
+	gcc main.c $(CFLAGS) server.out
+	gcc client.c $(CFLAGS) client.out

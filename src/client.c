@@ -3,7 +3,7 @@
 int main() {
     int sock = 0;
     struct sockaddr_in server_addr;
-    char *get_req = "GET /";
+    char *get_req = "GET 1.1\r\n";
     char buffer[256] = {0};
 
     // Create socket

@@ -1,8 +1,10 @@
 #include "dependencies.h"
+
 void* handle_client(void* client_fd);
 void send_mssg(int client_fd, const char* message);
 
 int main() {
+
     int server_fd;
     struct sockaddr_in server_addr;
 
@@ -17,9 +19,11 @@ printf("Server socket initialized with TCP STREAM IN IPv4!\n");
     server_addr.sin_port = htons(PORT);
 
     if (bind(server_fd, (struct sockaddr*)&server_addr, sizeof(server_addr)) < 0) {
-        perror("Bind failure");
+    
+	perror("Bind failure");
         close(server_fd);
         exit(EXIT_FAILURE);
+  
     }
 printf("Server File Descriptor binded with server_sock_address!\n");
     if (listen(server_fd, 10) < 0) {
