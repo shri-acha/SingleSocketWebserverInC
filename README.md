@@ -1,11 +1,4 @@
 # SingleSocketWebserverInC
-A single socket webserver written in C.
+A single socket HTTP webserver written in C.
 
-
-Things to work on:
-
-- Understand
-  1. Server socket handling.
-  2. Client socket handling.
-
-- Status: *Under Construction*
+This webserver is single threaded and can response on the basis of the headers.
